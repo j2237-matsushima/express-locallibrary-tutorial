@@ -2,15 +2,15 @@ extends layout
 
 block content
 
-  h1 ジャンルを削除: #{genre.name}
+  h1 Delete Genre: #{genre.name}
 
   if genre_books.length
 
-    p #[strong このジャンルを削除する前に、以下の書籍を削除してください。]
+    p #[strong Delete the following books before attempting to delete this genre.]
 
     div(style='margin-left:20px;margin-top:20px')
 
-      h4 書籍
+      h4 Books
 
       dl
         each book in genre_books
@@ -19,10 +19,10 @@ block content
           dd #{book.summary}
 
   else
-    p 本当にこのジャンルを削除しますか？
+    p Do you really want to delete this Genre?
 
     form(method='POST')
       div.form-group
         input#id.form-control(type='hidden', name='id', value=genre._id )
 
-      button.btn.btn-primary(type='submit') 削除
+      button.btn.btn-primary(type='submit') Delete

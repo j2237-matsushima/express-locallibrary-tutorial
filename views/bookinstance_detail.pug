@@ -4,23 +4,23 @@ block content
 
   h1 ID: #{bookinstance._id}
 
-  p #[strong 書籍タイトル: ]
+  p #[strong Title: ]
     a(href=bookinstance.book.url) #{bookinstance.book.title}
-  p #[strong 出版情報:] #{bookinstance.imprint}
+  p #[strong Imprint:] #{bookinstance.imprint}
 
-  p #[strong 状態: ]
+  p #[strong Status: ]
     if bookinstance.status=='Available'
-      span.text-success 利用可能
+      span.text-success #{bookinstance.status}
     else if bookinstance.status=='Maintenance'
-      span.text-danger メンテナンス中
+      span.text-danger #{bookinstance.status}
     else
-      span.text-warning 貸出中
+      span.text-warning #{bookinstance.status}
 
   if bookinstance.status!='Available'
-    p #[strong 返却予定日:] #{bookinstance.due_back_formatted}
+    p #[strong Due back:] #{bookinstance.due_back_formatted}
 
   hr
   p
-    a(href=bookinstance.url+'/delete') 書籍インスタンスを削除
+    a(href=bookinstance.url+'/delete') Delete BookInstance
   p
-    a(href=bookinstance.url+'/update') 書籍インスタンスを更新
+    a(href=bookinstance.url+'/update') Update BookInstance

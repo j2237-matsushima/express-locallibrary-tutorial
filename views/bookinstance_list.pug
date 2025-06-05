@@ -9,13 +9,13 @@ block content
         li
           a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
           if val.status=='Available'
-            span.text-success 利用可能
+            span.text-success #{val.status}
           else if val.status=='Maintenance'
-            span.text-danger メンテナンス中
+            span.text-danger #{val.status}
           else
-            span.text-warning 貸出中
+            span.text-warning #{val.status}
           if val.status!='Available'
-            span  (返却予定日: #{val.due_back_formatted})
+            span  (Due: #{val.due_back_formatted})
 
   else
-    p 図書館には書籍のコピーがありません。
+    p There are no book copies in this library.

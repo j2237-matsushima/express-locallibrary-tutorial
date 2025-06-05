@@ -4,30 +4,30 @@ block content
 
   h1= title
 
-  p #[strong 本当にこの書籍インスタンスを削除しますか？]
+  p #[strong Do you really want to delete this BookInstance?]
 
   div(style="margin-left:20px")
 
     p #[strong ID]: #{bookinstance._id}
 
-    p #[strong 書籍タイトル: ]
+    p #[strong Title: ]
       a(href=bookinstance.book.url) #{bookinstance.book.title}
 
-    p #[strong 出版情報:] #{bookinstance.imprint}
+    p #[strong Imprint:] #{bookinstance.imprint}
 
-    p #[strong 状態: ]
+    p #[strong Status: ]
       if bookinstance.status=='Available'
-        span.text-success 利用可能
+        span.text-success #{bookinstance.status}
       else if bookinstance.status=='Maintenance'
-        span.text-danger メンテナンス中
+        span.text-danger #{bookinstance.status}
       else
-        span.text-warning 貸出中
+        span.text-warning #{bookinstance.status}
 
     if bookinstance.status!='Available'
-      p #[strong 返却予定日:] #{bookinstance.due_back_formatted}
+      p #[strong Due back:] #{bookinstance.due_back_formatted}
 
   form(method='POST')
     div.form-group
       input#id.form-control(type='hidden',name='id', value=bookinstance._id )
 
-    button.btn.btn-primary(type='submit') 削除
+    button.btn.btn-primary(type='submit') Delete

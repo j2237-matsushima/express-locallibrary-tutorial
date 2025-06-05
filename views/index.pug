@@ -2,40 +2,15 @@ extends layout
 
 block content
   h1= title
-  p ようこそ #[em LocalLibrary] へ。Mozilla Developer Network のチュートリアルとして開発された、非常に基本的な Express ウェブサイトです。
+  p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
 
-  h2.mt-5.mb-3 統計情報
+  h1 Dynamic content
 
-  
+  p The library has the following record counts:
 
-  .row
-    .col-md-4.mb-4
-      .card.border-primary
-        .card-body
-          h5.card-title 書籍数
-          p.card-text.display-4 !{book_count}
-
-    .col-md-4.mb-4
-      .card.border-success
-        .card-body
-          h5.card-title 総コピー数
-          p.card-text.display-4 !{book_instance_count}
-
-    .col-md-4.mb-4
-      .card.border-info
-        .card-body
-          h5.card-title 貸し出し可能なコピー
-          p.card-text.display-4 !{book_instance_available_count}
-
-    .col-md-4.mb-4
-      .card.border-warning
-        .card-body
-          h5.card-title 著者数
-          p.card-text.display-4 !{author_count}
-
-    .col-md-4.mb-4
-      .card.border-danger
-        .card-body
-          h5.card-title ジャンル数
-          p.card-text.display-4 !{genre_count}
-
+  ul
+    li #[strong Books:] !{book_count}
+    li #[strong Copies:] !{book_instance_count}
+    li #[strong Copies available:] !{book_instance_available_count}
+    li #[strong Authors:] !{author_count}
+    li #[strong Genres:] !{genre_count}
