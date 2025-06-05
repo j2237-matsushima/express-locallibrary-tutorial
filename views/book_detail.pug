@@ -11,7 +11,47 @@ block content
     each val, index in book.genre
       a(href=val.url) #{val.name}
       if index < book.genre.length - 1
+        |,&nbsp;extends layout
+
+block content
+  h1 書籍タイトル: !{book.title}
+
+  p #[strong 著者: ]
+    a(href=book.author.url) #{book.author.name}
+  p #[strong 概要:] !{book.summary}
+  p #[strong ISBN:] #{book.isbn}
+  p #[strong ジャンル: ]
+    each val, index in book.genre
+      a(href=val.url) #{val.name}
+      if index < book.genre.length - 1
         |,&nbsp;
+
+  div(style='margin-left:20px;margin-top:20px')
+    h2(style='font-size: 1.5rem;') コピー
+
+    each val in book_instances
+      hr
+      if val.status=='Available'
+        p.text-success 利用可能
+      else if val.status=='Maintenance'
+        p.text-danger メンテナンス中
+      else
+        p.text-warning 貸出中
+      p #[strong 出版情報:] #{val.imprint}
+      if val.status!='Available'
+        p #[strong 返却予定日:] #{val.due_back}
+      p #[strong ID: ]
+        a(href=val.url) #{val._id}
+
+    else
+      p 図書館にはこの書籍のコピーがありません。
+
+  hr
+  p
+    a(href=book.url+'/delete') 書籍を削除
+  p
+    a(href=book.url+'/update') 書籍を更新
+
 
   div(style='margin-left:20px;margin-top:20px')
     h2(style='font-size: 1.5rem;') Copies
