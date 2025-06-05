@@ -4,13 +4,38 @@ block content
   h1= title
   p ようこそ #[em LocalLibrary] へ。Mozilla Developer Network のチュートリアルとして開発された、非常に基本的な Express ウェブサイトです。
 
-  h1 動的コンテンツ
+  h2.mt-5.mb-3 統計情報
 
-  p 図書館の記録は以下の通りです：
+  
 
-  ul
-    li #[strong 書籍数:] !{book_count}
-    li #[strong 総コピー数:] !{book_instance_count}
-    li #[strong 貸し出し可能なコピー:] !{book_instance_available_count}
-    li #[strong 著者数:] !{author_count}
-    li #[strong ジャンル数:] !{genre_count}
+  .row
+    .col-md-4.mb-4
+      .card.border-primary
+        .card-body
+          h5.card-title 書籍数
+          p.card-text.display-4 !{book_count}
+
+    .col-md-4.mb-4
+      .card.border-success
+        .card-body
+          h5.card-title 総コピー数
+          p.card-text.display-4 !{book_instance_count}
+
+    .col-md-4.mb-4
+      .card.border-info
+        .card-body
+          h5.card-title 貸し出し可能なコピー
+          p.card-text.display-4 !{book_instance_available_count}
+
+    .col-md-4.mb-4
+      .card.border-warning
+        .card-body
+          h5.card-title 著者数
+          p.card-text.display-4 !{author_count}
+
+    .col-md-4.mb-4
+      .card.border-danger
+        .card-body
+          h5.card-title ジャンル数
+          p.card-text.display-4 !{genre_count}
+
